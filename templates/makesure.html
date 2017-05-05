@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>跳转页</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+<link rel="shortcut icon" href="{% static "images/拜托熊_小.png" %}" type="image/ico" />
+<style>
+.demo{width:300px; margin:60px auto 10px auto}
+@media only screen and (min-width: 420px) {
+	.demo{width:500px; margin:60px auto 10px auto}
+}
+.demo p{line-height:36px}
+.button {
+	display: inline-block;
+	cursor:pointer;
+	outline: none;
+	text-align: center;
+	text-decoration: none;
+	font: 16px/100% 'Microsoft yahei',Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #ededed;
+}
+.button:hover {
+	text-decoration: none;
+	background: #fff;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+	color: #999;
+}
+</style>
+</head>
+
+<body>
+<div id="header">
+   <div id="logo"><h1><a href="http://www.yiban.cn">yiban</a></h1></div>
+</div>
+<div id="main">
+	<div class="demo">
+        <div>
+            <p>1.本次“网薪兑换”活动最终解释权归西南医大易班所有。</p>
+            <p>2.本次“网薪兑换”活动最终解释权归西南医大易班所有。</p>
+            <p>3.本次“网薪兑换”活动最终解释权归西南医大易班所有。</p>
+            <p>4.本次“网薪兑换”活动最终解释权归西南医大易班所有。</p><hr />
+        </div>
+	<p style="color:red">请认真阅读完注意事项再点击按钮</p>
+	<form action="http://eshop.yiban.cn" method="get" name="agree">
+		<input type="submit" class="button" value="请认真查看<服务条款和声明> (45)" id="agree_btn" name="agreeb">
+	</form>
+	<br/>
+	<br/>
+	<br/>
+	</div>
+    <br/>
+</div>
+<script>
+var secs = 45;
+document.agree.agreeb.disabled=true;
+for(var i=1;i<=secs;i++) {
+	window.setTimeout("update(" + i + ")", i * 1000);
+}
+function update(num) {
+	if(num == secs) {
+		document.agree.agreeb.value =" 我 同 意 ";
+		document.agree.agreeb.disabled=false;
+	}
+	else {
+		var printnr = secs-num;
+		document.agree.agreeb.value = "请认真查看<服务条款和声明> (" + printnr +")";
+	}
+}
+
+function showtime(t){
+	document.myform.phone.disabled=true;
+	for(i=1;i<=t;i++) {
+		window.setTimeout("update_p(" + i + ","+t+")", i * 1000);
+	}
+
+}
+</script>
+
+<div id="footer">
+    <p>Powered by 西南医大易班技术开发部</p>
+</div>
+</body>
+</html>
